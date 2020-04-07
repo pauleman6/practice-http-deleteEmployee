@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges,AfterViewChecked, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../employee';
 import {map} from 'rxjs/operators';
@@ -11,7 +11,7 @@ import {map} from 'rxjs/operators';
 export class EmployeeListComponent implements OnInit {
 
   employees: Employee[] = [];
-  isFetching: false;
+ 
   constructor(private empService: EmployeeService) {
       this.empService.getEmployees()
       .subscribe(data  => {

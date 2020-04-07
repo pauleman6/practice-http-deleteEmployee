@@ -1,4 +1,4 @@
-import { Injectable, OnInit, OnChanges, AfterContentChecked } from '@angular/core';
+import { Injectable, OnInit} from '@angular/core';
 import { Employee } from './employee';
 import {Observable} from 'rxjs';
 import {HttpClient } from '@angular/common/http';
@@ -17,7 +17,7 @@ export class EmployeeService {
 
  
   getEmployees(): Observable<Employee[]>{
-    this.employees =  this.http.get<Employee[]>('https://httpemployee-bc50e.firebaseio.com/employeedb.json')  
+    this.employees =  this.http.get<Employee[]>('https://httpemployee-bc50e.firebaseio.com/employee.json')  
         .pipe( //transform the data to parse employee objects
           map(responseData => { 
           const postsArray: Employee[] = []; //array to store employee objects
@@ -33,7 +33,7 @@ export class EmployeeService {
     }
 
   addEmployees(emp: Employee){
-    this.http.post('https://httpemployee-bc50e.firebaseio.com/employeedb.json', emp)
+    this.http.post('https://httpemployee-bc50e.firebaseio.com/employee.json', emp)
     .subscribe(data => {
       console.log(data);
     })
@@ -44,7 +44,7 @@ export class EmployeeService {
    let empId: string = this.objectId[id];
     console.log("empId is " + empId)
    
-    this.http.delete('https://httpemployee-bc50e.firebaseio.com/employeedb/'+ empId + '.json')
+    this.http.delete('https://httpemployee-bc50e.firebaseio.com/employee/'+ empId + '.json')
       .subscribe(data => {
         console.log('delete request successful');
       })

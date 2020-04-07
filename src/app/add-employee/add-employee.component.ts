@@ -11,9 +11,8 @@ export class AddEmployeeComponent implements OnInit {
   eName: string;
   eAge: number;
   newEmployee: Employee;
+  count: number =  0;
  
-  count: number = 1;
-  
   constructor(private empService: EmployeeService
   ) { }
 
@@ -26,6 +25,7 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   addNewEmployee(){
+    console.log("name is " +this.eName)
     this.newEmployee = {name: this.eName, id: this.count++, age: this.eAge};
         console.log(this.newEmployee);
         this.empService.addEmployees(this.newEmployee);
